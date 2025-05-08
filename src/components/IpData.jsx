@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
 import { MainContext } from "../context/MainContext";
+import { ClipLoader } from "react-spinners";
 
 const IPData = () => {
   const { ipData, loading, error } = useContext(MainContext);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[200px]">
+        <ClipLoader color="#36d7b7" size={50} />
+      </div>
+    );
+  }
+
   if (error) return <p className="text-red-500">{error}</p>;
   if (!ipData) return null;
 
